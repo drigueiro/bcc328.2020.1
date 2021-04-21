@@ -19,7 +19,10 @@ let%expect_test _ =
   (* function declaration and constant expression *)
   check "int f(int x) = 100";
   [%expect{|
-                   ╭───╮
+                 ╭───────╮
+                 │Program│
+                 ╰────┬──╯
+                   ╭──┴╮
                    │Fun│
                    ╰──┬╯
          ╭───────────┬┴───────────╮
@@ -33,7 +36,10 @@ let%expect_test _ =
 
   check "int f(int x, int y, bool z) = 100";
   [%expect{|
-                                ╭───╮
+                              ╭───────╮
+                              │Program│
+                              ╰───┬───╯
+                                ╭─┴─╮
                                 │Fun│
                                 ╰─┬─╯
          ╭────────────────────────┴────────────────────────╮
@@ -55,7 +61,10 @@ let%expect_test _ =
   (* binary operators *)
   check "bool f(int x) = 2 + 3 + 4 < 5 + 6";
   [%expect{|
-                                         ╭───╮
+                                       ╭───────╮
+                                       │Program│
+                                       ╰───┬───╯
+                                         ╭─┴─╮
                                          │Fun│
                                          ╰─┬─╯
           ╭───────────┬────────────────────┴────────────╮
@@ -80,7 +89,10 @@ let%expect_test _ =
 
   check "int g(int x, bool y) = 6 < 7 + 1";
   [%expect{|
-                                    ╭───╮
+                                  ╭───────╮
+                                  │Program│
+                                  ╰───┬───╯
+                                    ╭─┴─╮
                                     │Fun│
                                     ╰─┬─╯
          ╭──────────────────┬─────────┴──────────────────╮
